@@ -17,10 +17,13 @@ class CensusHook(HttpHook):
     :type census_conn_id: str
     '''
 
+    conn_type = 'census'
+    hook_name = 'Census'
+
     @staticmethod
     def get_ui_field_behaviour() -> Dict:
         return {
-            'hidden_fields': ['login'],
+            'hidden_fields': ['login', 'port', 'schema', 'extra'],
             'relabeling': {
                 'password': 'Census Secret Token'
             }
@@ -28,6 +31,7 @@ class CensusHook(HttpHook):
 
     def __init__(self, census_conn_id: str = 'census_default', *args, **kwargs) -> None:
         super().__init__(http_conn_id = census_conn_id, *args, **kwargs)
+        self.census_conn_id = census_conn_id
 
     def _get_secret_token(self) -> str:
         conn = self.get_connection(self.http_conn_id)
@@ -46,4 +50,9 @@ class CensusHook(HttpHook):
         all_headers = {**auth_header, **headers} if headers else auth_header
 
         session = super().get_conn(all_headers)
+
+        conn = self.get_connection(self.census_conn_id)
+        if not conn.host:
+            self.base_url = 'https://app.getcensus.com'
+
         return session
