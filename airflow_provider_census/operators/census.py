@@ -21,4 +21,5 @@ class CensusOperator(BaseOperator):
     def execute(self, context) -> Any:
         endpoint = f'api/v1/syncs/{self.sync_id}/trigger'
         hook = self._get_hook()
-        return hook.run(endpoint)
+        response = hook.run(endpoint)
+        response.raise_for_status()
