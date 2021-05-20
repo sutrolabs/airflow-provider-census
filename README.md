@@ -18,7 +18,7 @@ In the Airflow Connections UI, create a new connection:
 
 * Conn ID: census_default
 * Conn Type: HTTP
-* Password: <secret-token>
+* Password: secret-token
 
 ### Configuration in Airflow 2
 
@@ -26,7 +26,7 @@ In the Airflow Connections UI, create a new connection:
 
 * Conn Id: census_default
 * Conn Type: Census
-* Census Secret Token: <secret-token>
+* Census Secret Token: secret-token
 
 ## Hooks
 
