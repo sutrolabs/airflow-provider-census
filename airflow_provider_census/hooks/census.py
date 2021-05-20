@@ -44,7 +44,7 @@ class CensusHook(HttpHook):
         secret_token = self._get_secret_token()
 
         auth_header = {
-            'Authorization': f'Bearer {secret_token}'
+            'Authorization': 'Bearer {secret_token}'.format(secret_token = secret_token)
         }
 
         all_headers = {**auth_header, **headers} if headers else auth_header
