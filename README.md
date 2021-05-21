@@ -1,10 +1,10 @@
 # Census Provider for Apache Airflow
 
-This package allows you to trigger syncs for ![Census](https://www.getcensus.com/).
+This package allows you to trigger syncs for [Census](https://www.getcensus.com/).
 
 ## Installation
 
-Install the ![airflow-provider-census](https://pypi.org/project/airflow-provider-census/) package from PyPI using your preferred way of installing python packages.
+Install the [airflow-provider-census](https://pypi.org/project/airflow-provider-census/) package from PyPI using your preferred way of installing python packages.
 
 ## Configuration
 
