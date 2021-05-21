@@ -23,7 +23,7 @@ class CensusHook(HttpHook):
     @staticmethod
     def get_ui_field_behaviour() -> Dict:
         return {
-            'hidden_fields': ['login', 'port', 'schema', 'extra'],
+            'hidden_fields': ['login', 'port', 'schema', 'extra', 'host'],
             'relabeling': {
                 'password': 'Census Secret Token'
             }
