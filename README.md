@@ -91,3 +91,7 @@ sync = CensusOperator(sync_id = 27, dag = dag, task_id = 'sync')
 # From
 
 :wave: The folks at [Census](http://getcensus.com) originally put this together. Have data? We'll sync your data warehouse with your CRM and the customer success apps critical to your team.
+
+# Need help setting this up?
+
+You can always contact us via support@getcensus.com or [in-app](https://app.getcensus.com/) via the live chat in the bottom right corner.
