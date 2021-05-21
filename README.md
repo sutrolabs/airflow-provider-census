@@ -82,3 +82,12 @@ dag = DAG('census', default_args = default_args)
 
 sync = CensusOperator(sync_id = 27, dag = dag, task_id = 'sync')
 ```
+
+# Feedback
+
+[Source code available on Github](https://github.com/sutrolabs/airflow-provider-census). Feedback and pull requests are greatly appreciated. Let us know if we can improve this.
+
+
+# From
+
+:wave: The folks at [Census](http://getcensus.com) originally put this together. Have data? We'll sync your data warehouse with your CRM and the customer success apps critical to your team.
