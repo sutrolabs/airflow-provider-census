@@ -66,14 +66,8 @@ from airflow.utils.dates import days_ago
 from datetime import timedelta
 
 default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': days_ago(1),
-    'email': ['airflow@example.com'],
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
+    "owner": "airflow",
+    "start_date": days_ago(1)
 }
 
 dag = DAG('census', default_args = default_args)
