@@ -15,28 +15,19 @@ interactions:
       User-Agent:
       - python-requests/2.25.1
     method: POST
-    uri: https://app.getcensus.com/api/v1/syncs/2648/trigger
+    uri: https://app.getcensus.com/api/v1/syncs/0/trigger
   response:
     body:
-      string: !!binary |
-        H4sIAB7NpmAAA6pWKi5JLCktVrJSys9WqgUAAAD//wMA3e0THQ8AAAA=
+      string: '{"status":"ok"}'
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Connection:
       - keep-alive
       Content-Encoding:
-      - gzip
+      - application/json
       Content-Security-Policy:
       - frame-ancestors 'none'
-      Content-Security-Policy-Report-Only:
-      - font-src 'self' fonts.gstatic.com js.intercomcdn.com; form-action 'none';
-        frame-ancestors 'none'; img-src 'self' data:; script-src 'self' 'unsafe-inline'
-        *.amplitude.com www.googletagmanager.com connect.facebook.net *.licdn.com
-        *.hs-analytics.net *.fullstory.com fullstory.com *.getcensus.com cdn.segment.com
-        cdn.headwayapp.co beacon-v2.helpscout.net js.intercomcdn.com widget.intercom.io
-        apis.google.com cdn.lr-ingest.io; style-src 'self' 'unsafe-inline' fonts.googleapis.com;
-        report-uri /api/telemetry/csp_report
       Content-Type:
       - application/json; charset=utf-8
       Date:
