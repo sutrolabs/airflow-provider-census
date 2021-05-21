@@ -12,6 +12,14 @@ There are 2 ways to configure a Census connection depending on whether you are u
 
 The `CensusHook` and `CensusOperator` use the `census_default` connection id as a default, although this is configurable if you would like to use your own connection id.
 
+### Finding the secret-token
+
+1. Go to any sync at https://app.getcensus.com/syncs
+2. Click on the Sync Configuration tab.
+3. Next to API TRIGGER, click "Click to show"
+4. The url will be of the format https://bearer:secret-token:arandomstring@app.getcensus.com/api/v1/syncs/0/trigger
+5. the secret token will be of the format "secret-token:arandomstring" in the url above, including the "secret-token:" part. Do not include the "@".
+
 ### Configuration in Airflow 1.10
 
 In the Airflow Connections UI, create a new connection:
@@ -45,7 +53,7 @@ from airflow_provider_census.hooks.census import CensusHook
 
 `CensusOperator` triggers a sync job in Census. The operator takes 2 parameters:
 
-1. sync_id : Navigate to the sync and check the url for the sync id. This should be a required integer.
+1. sync_id : Navigate to the sync and check the url for the sync id. For example https://app.getcensus.com/syncs/0/overview here, the sync_id would be 0.
 2. census_conn_id: The connection id to use. This is optional and defaults to 'census_default'.
 
 The operator can be imported by the following code:
