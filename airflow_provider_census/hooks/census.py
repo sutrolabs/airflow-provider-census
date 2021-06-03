@@ -17,6 +17,8 @@ class CensusHook(HttpHook):
     :type census_conn_id: str
     '''
 
+    conn_name_attr = 'census_conn_id'
+    default_conn_name = 'census_default'
     conn_type = 'census'
     hook_name = 'Census'
 
@@ -29,7 +31,7 @@ class CensusHook(HttpHook):
             }
         }
 
-    def __init__(self, census_conn_id: str = 'census_default', *args, **kwargs) -> None:
+    def __init__(self, census_conn_id: str = default_conn_name, *args, **kwargs) -> None:
         super().__init__(http_conn_id = census_conn_id, *args, **kwargs)
         self.census_conn_id = census_conn_id
 
