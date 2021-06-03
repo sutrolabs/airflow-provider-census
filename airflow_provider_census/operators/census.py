@@ -1,3 +1,4 @@
+from airflow.exceptions import AirflowException, AirflowTaskTimeout
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
 import time
@@ -33,7 +34,6 @@ class CensusOperator(BaseOperator):
             sync_run_id = body['data']['sync_run_id']
             poll_endpoint = 'api/v1/sync_runs/{sync_run_id}'.format(sync_run_id = sync_run_id)
             poll_hook = CensusHook(census_conn_id = self.census_conn_id, method = 'GET')
-            terminal_status_set = {'completed', 'failed'}
 
             start = time.monotonic()
             while time.monotonic() - start < self.timeout_seconds:
@@ -43,7 +43,18 @@ class CensusOperator(BaseOperator):
                 poll_body = poll_response.json()
                 status = poll_body['data']['status']
 
-                if status in terminal_status_set:
-                    break
+                if status == 'completed':
+                    return
+                elif status == 'failed':
+                    raise AirflowException('Sync {sync_id} failed for sync run {sync_run_id} with error "{error}"'.format(
+                        sync_id = self.sync_id,
+                        sync_run_id = sync_run_id,
+                        error = poll_body['data']['error_message']
+                    ))
 
                 time.sleep(self.wait_seconds)
+
+            raise AirflowTaskTimeout('Timed out for sync {sync_id} while waiting for sync run {sync_run_id}'.format(
+                sync_id = self.sync_id,
+                sync_run_id = sync_run_id
+            ))
