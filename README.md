@@ -53,7 +53,7 @@ from airflow_provider_census.hooks.census import CensusHook
 
 ### CensusOperator
 
-`CensusOperator` triggers a sync job in Census. The operator takes 2 parameters:
+`CensusOperator` triggers a sync job in Census. The operator takes the following parameters:
 
 1. sync_id : Navigate to the sync and check the url for the sync id. For example https://app.getcensus.com/syncs/0/overview here, the sync_id would be 0.
 2. wait : Whether to wait for a sync run to finish.
