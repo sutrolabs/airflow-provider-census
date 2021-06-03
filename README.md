@@ -49,12 +49,17 @@ The hook can be imported by the following code:
 from airflow_provider_census.hooks.census import CensusHook
 ```
 
+## Operators
+
 ### CensusOperator
 
 `CensusOperator` triggers a sync job in Census. The operator takes 2 parameters:
 
 1. sync_id : Navigate to the sync and check the url for the sync id. For example https://app.getcensus.com/syncs/0/overview here, the sync_id would be 0.
-2. census_conn_id: The connection id to use. This is optional and defaults to 'census_default'.
+2. wait : Whether to wait for a sync run to finish.
+3. wait_seconds : The number of seconds to wait between checking the status of a sync run.
+4. timeout_seconds : After this many seconds, stop polling the sync run status.
+5. census_conn_id : The connection id to use. This is optional and defaults to 'census_default'.
 
 The operator can be imported by the following code:
 
