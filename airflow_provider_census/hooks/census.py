@@ -17,6 +17,8 @@ class CensusHook(HttpHook):
     :type census_conn_id: str
     '''
 
+    conn_name_attr = 'census_conn_id'
+    default_conn_name = 'census_default'
     conn_type = 'census'
     hook_name = 'Census'
 
@@ -29,7 +31,7 @@ class CensusHook(HttpHook):
             }
         }
 
-    def __init__(self, census_conn_id: str = 'census_default', *args, **kwargs) -> None:
+    def __init__(self, census_conn_id: str = default_conn_name, *args, **kwargs) -> None:
         super().__init__(http_conn_id = census_conn_id, *args, **kwargs)
         self.census_conn_id = census_conn_id
 
@@ -56,3 +58,21 @@ class CensusHook(HttpHook):
             self.base_url = 'https://app.getcensus.com'
 
         return session
+
+    def trigger_sync(self, sync_id):
+        endpoint = 'api/v1/syncs/{sync_id}/trigger'.format(sync_id = sync_id)
+
+        self.method = 'POST'
+        response = self.run(endpoint)
+        response.raise_for_status()
+
+        return response.json()['data']['sync_run_id']
+
+    def get_sync_run_info(self, sync_run_id):
+        endpoint = 'api/v1/sync_runs/{sync_run_id}'.format(sync_run_id = sync_run_id)
+
+        self.method = 'GET'
+        response = self.run(endpoint)
+        response.raise_for_status()
+
+        return response.json()['data']

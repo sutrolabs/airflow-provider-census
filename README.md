@@ -49,17 +49,34 @@ The hook can be imported by the following code:
 from airflow_provider_census.hooks.census import CensusHook
 ```
 
+## Operators
+
 ### CensusOperator
 
-`CensusOperator` triggers a sync job in Census. The operator takes 2 parameters:
+`CensusOperator` triggers a sync job in Census. The operator takes the following parameters:
 
 1. sync_id : Navigate to the sync and check the url for the sync id. For example https://app.getcensus.com/syncs/0/overview here, the sync_id would be 0.
-2. census_conn_id: The connection id to use. This is optional and defaults to 'census_default'.
+2. census_conn_id : The connection id to use. This is optional and defaults to 'census_default'.
 
 The operator can be imported by the following code:
 
 ```python
 from airflow_provider_census.operators.census import CensusOperator
+```
+
+## Sensors
+
+### CensusSensor
+
+`CensusSensor` polls a sync run in Census. The sensor takes the following parameters:
+
+1. sync_run_id : The sync run id you get back from the CensusOperator which triggers a new sync.
+2. census_conn_id : The connection id to use. This is optional and defaults to 'census_default'.
+
+The sensor can be imported by the following code:
+
+```python
+from airflow_provider_census.sensors.census import CensusSensor
 ```
 
 ## Example
@@ -81,6 +98,10 @@ default_args = {
 dag = DAG('census', default_args = default_args)
 
 sync = CensusOperator(sync_id = 27, dag = dag, task_id = 'sync')
+
+sensor = CensusSensor(sync_run_id = "{{ ti.xcom_pull(task_ids = 'sync') }}", dag = dag, task_id = 'sensor')
+
+sync >> sensor
 ```
 
 # Feedback
