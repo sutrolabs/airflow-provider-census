@@ -58,3 +58,21 @@ class CensusHook(HttpHook):
             self.base_url = 'https://app.getcensus.com'
 
         return session
+
+    def trigger_sync(self, sync_id):
+        endpoint = 'api/v1/syncs/{sync_id}/trigger'.format(sync_id = sync_id)
+
+        self.method = 'POST'
+        response = self.run(endpoint)
+        response.raise_for_status()
+
+        return response.json()['data']['sync_run_id']
+
+    def get_sync_run_info(self, sync_run_id):
+        endpoint = 'api/v1/sync_runs/{sync_run_id}'.format(sync_run_id = sync_run_id)
+
+        self.method = 'GET'
+        response = self.run(endpoint)
+        response.raise_for_status()
+
+        return response.json()['data']
