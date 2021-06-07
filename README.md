@@ -98,6 +98,10 @@ default_args = {
 dag = DAG('census', default_args = default_args)
 
 sync = CensusOperator(sync_id = 27, dag = dag, task_id = 'sync')
+
+sensor = CensusSensor(sync_run_id = "{{ ti.xcom_pull(task_ids = 'sync') }}", dag = dag, task_id = 'sensor')
+
+sync >> sensor
 ```
 
 # Feedback
