@@ -1,7 +1,5 @@
-from airflow.exceptions import AirflowException, AirflowTaskTimeout
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
-import time
 from typing import Any
 
 from airflow_provider_census.hooks.census import CensusHook
