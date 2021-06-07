@@ -64,6 +64,21 @@ The operator can be imported by the following code:
 from airflow_provider_census.operators.census import CensusOperator
 ```
 
+## Sensors
+
+### CensusSensor
+
+`CensusSensor` polls a sync run in Census. The sensor takes the following parameters:
+
+1. sync_run_id : The sync run id you get back from the CensusOperator which triggers a new sync.
+2. census_conn_id : The connection id to use. This is optional and defaults to 'census_default'.
+
+The sensor can be imported by the following code:
+
+```python
+from airflow_provider_census.sensors.census import CensusSensor
+```
+
 ## Example
 
 The following example will run a Census sync once a day:
