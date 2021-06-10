@@ -1,12 +1,28 @@
+import pytest
+import requests_mock
+import unittest
+from unittest import mock
+
 from airflow_provider_census.hooks.census import CensusHook
 
-class TestCensusHook:
-    def test_get_conn(self):
+
+# Mock the `census_default` Airflow connection 
+@mock.patch.dict('os.environ', AIRFLOW_CONN_CENSUS_DEFAULT='http://API_KEY:API_SECRET@')
+class TestCensusHook(unittest.TestCase):
+    """ 
+    Test functions for Census Hook. 
+
+    Mocks responses from Census API.
+    """
+
+    @requests_mock.mock()
+    def test_get_conn(self, requests_mock):
         hook = CensusHook()
         session = hook.get_conn(None)
         assert 'Authorization' in session.headers
-        assert session.headers['Authorization'] == 'Bearer secret-token:census'
+        assert session.headers['Authorization'] == 'Bearer API_SECRET'
 
+    @requests_mock.mock()
     def test_trigger_sync(self, requests_mock):
         trigger_json = {
             'status': 'success',
@@ -21,6 +37,7 @@ class TestCensusHook:
 
         assert 1 == sync_run_id
 
+    @requests_mock.mock()
     def test_get_sync_run_info(self, requests_mock):
         sync_run_info_json = {
             'status': 'success',

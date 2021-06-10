@@ -1,9 +1,20 @@
-from airflow_provider_census.sensors.census import CensusSensor
-
-from airflow.exceptions import AirflowException
 import pytest
+import requests_mock
+import unittest
+from unittest import mock
 
-class TestCensusSensor:
+from airflow_provider_census.sensors.census import CensusSensor
+from airflow.exceptions import AirflowException
+
+
+# Mock the `census_default` Airflow connection 
+@mock.patch.dict('os.environ', AIRFLOW_CONN_CENSUS_DEFAULT='http://API_KEY:API_SECRET@')
+class TestCensusSensor(unittest.TestCase):
+    """ 
+    Test functions for Census Sensor. 
+    """
+
+    @requests_mock.mock()
     def test_poke_working(self, requests_mock):
         sync_run_info_json = {
             'status': 'success',
@@ -17,6 +28,7 @@ class TestCensusSensor:
 
         assert not sensor.poke(None)
 
+    @requests_mock.mock()
     def test_poke_failed(self, requests_mock):
         sync_run_info_json = {
             'status': 'success',
@@ -34,6 +46,7 @@ class TestCensusSensor:
 
             assert 'Census sync run 0 failed with error: something broke' == excinfo.value
 
+    @requests_mock.mock()
     def test_poke_completed(self, requests_mock):
         sync_run_info_json = {
             'status': 'success',

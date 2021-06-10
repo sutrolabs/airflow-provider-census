@@ -1,21 +1,19 @@
-try:
-    # airflow 2.0
-    from airflow.providers.http.hooks.http import HttpHook
-except ImportError:
-    # airflow 1.10
-    from airflow.hooks.http_hook import HttpHook
-
-from airflow.exceptions import AirflowException
 import requests
 from typing import Any, Dict
 
+from airflow.exceptions import AirflowException
+try:
+    from airflow.providers.http.hooks.http import HttpHook # airflow 2.0
+except ImportError:
+    from airflow.hooks.http_hook import HttpHook # airflow 1.10
+
+
 class CensusHook(HttpHook):
-    '''
-    Census API hook
+    """Census API hook
 
     :param census_conn_id: `Conn ID` of the Connection to be used to configure this hook.
     :type census_conn_id: str
-    '''
+    """
 
     conn_name_attr = 'census_conn_id'
     default_conn_name = 'census_default'
