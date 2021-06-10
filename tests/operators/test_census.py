@@ -8,9 +8,10 @@ class TestCensusOperator:
         trigger_json = {
             'status': 'success',
             'data': {
-                'sync_run_id': 0
+                'sync_run_id': 1
             }
         }
         requests_mock.post('https://app.getcensus.com/api/v1/syncs/0/trigger', json = trigger_json)
         operator = CensusOperator(sync_id = 0, task_id = 'census_operator')
-        operator.execute(None)
+        sync_run_id = operator.execute(None)
+        assert sync_run_id == 1
