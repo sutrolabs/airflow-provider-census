@@ -7,8 +7,7 @@ from airflow_provider_census.operators.census import CensusOperator
 from airflow.exceptions import AirflowException, AirflowTaskTimeout
 
 
-
-# Mock the `census_default` Airflow connection 
+# Mock the `census_default` Airflow connection
 @mock.patch.dict('os.environ', AIRFLOW_CONN_CENSUS_DEFAULT='http://API_KEY:API_SECRET@')
 class TestCensusOperator(unittest.TestCase):
     """ 
@@ -25,7 +24,8 @@ class TestCensusOperator(unittest.TestCase):
                 'sync_run_id': 1
             }
         }
-        requests_mock.post('https://app.getcensus.com/api/v1/syncs/0/trigger', json = trigger_json)
-        operator = CensusOperator(sync_id = 0, task_id = 'census_operator')
+        requests_mock.post(
+            'https://app.getcensus.com/api/v1/syncs/0/trigger', json=trigger_json)
+        operator = CensusOperator(sync_id=0, task_id='census_operator')
         sync_run_id = operator.execute(None)
         assert sync_run_id == 1
