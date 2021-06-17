@@ -6,7 +6,12 @@ from airflow_provider_census.hooks.census import CensusHook
 
 class CensusOperator(BaseOperator):
     '''
-    `CensusOperator` interacts with the Census API
+    `CensusOperator` triggers a Census sync.
+
+    :param sync_id: The sync id that the oeprator should trigger.
+    :type sync_id: int
+    :param census_conn_id: The connection to be used.
+    :type census_conn_id: str
     '''
 
     @apply_defaults

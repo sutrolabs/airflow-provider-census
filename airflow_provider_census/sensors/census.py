@@ -12,6 +12,15 @@ from airflow.utils.decorators import apply_defaults
 from airflow_provider_census.hooks.census import CensusHook
 
 class CensusSensor(BaseSensorOperator):
+    '''
+    `CensusSensor` waits for a sync run to finish.
+
+    :param sync_run_id: The id of the sync run the sensor should wait for.
+    :type sync_run_id: str or int
+    :param census_conn_id: The connection to be used.
+    :type census_conn_id: str
+    '''
+
     template_fields = ['sync_run_id']
 
     @apply_defaults
