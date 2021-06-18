@@ -16,10 +16,20 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG('census', max_active_runs = 1, default_args = default_args)
+dag = DAG('census', max_active_runs=1, default_args=default_args)
 
-sync = CensusOperator(sync_id = 27, dag = dag, task_id = 'sync')
+sync = CensusOperator(
+    task_id='sync',
+    census_conn_id='census_default',
+    sync_id=4895,
+    dag=dag,
+)
 
-sensor = CensusSensor(sync_run_id = "{{ ti.xcom_pull(task_ids = 'sync') }}", dag = dag, task_id = 'sensor')
+sensor = CensusSensor(
+    task_id='sensor',
+    sync_run_id="{{ ti.xcom_pull(task_ids = 'sync') }}",
+    census_conn_id='census_default',
+    dag=dag,
+)
 
 sync >> sensor

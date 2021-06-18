@@ -4,15 +4,15 @@ from typing import Any
 
 from airflow_provider_census.hooks.census import CensusHook
 
-class CensusOperator(BaseOperator):
-    '''
-    `CensusOperator` triggers a Census sync.
 
-    :param sync_id: The sync id that the oeprator should trigger.
+class CensusOperator(BaseOperator):
+    """Triggers sync with Census API.
+
+    :param sync_id: Census sync ID
     :type sync_id: int
-    :param census_conn_id: The connection to be used.
+    :param census_conn_id: `Conn ID` of the Connection to be used to configure this hook.
     :type census_conn_id: str
-    '''
+    """
 
     @apply_defaults
     def __init__(self, sync_id: int, census_conn_id: str = 'census_default', **kwargs):
@@ -21,7 +21,7 @@ class CensusOperator(BaseOperator):
         self.census_conn_id = census_conn_id
 
     def _get_hook(self) -> CensusHook:
-        return CensusHook(census_conn_id = self.census_conn_id)
+        return CensusHook(census_conn_id=self.census_conn_id)
 
     def execute(self, context) -> Any:
         hook = self._get_hook()
