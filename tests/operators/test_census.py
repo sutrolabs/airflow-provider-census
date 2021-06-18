@@ -4,6 +4,11 @@ from airflow.exceptions import AirflowException, AirflowTaskTimeout
 import pytest
 
 class TestCensusOperator:
+    """
+    Test functions for Census Operator.
+    Mocks responses from Census API.
+    """
+
     def test_census_operator(self, requests_mock):
         trigger_json = {
             'status': 'success',

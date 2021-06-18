@@ -4,6 +4,10 @@ from airflow.exceptions import AirflowException
 import pytest
 
 class TestCensusSensor:
+    """
+    Test functions for Census Sensor.
+    """
+
     def test_poke_working(self, requests_mock):
         sync_run_info_json = {
             'status': 'success',

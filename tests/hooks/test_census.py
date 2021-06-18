@@ -1,6 +1,11 @@
 from airflow_provider_census.hooks.census import CensusHook
 
 class TestCensusHook:
+    """
+    Test functions for Census Hook.
+    Mocks responses from Census API.
+    """
+
     def test_get_conn(self):
         hook = CensusHook()
         session = hook.get_conn(None)
