@@ -4,5 +4,5 @@ def get_provider_info():
         'name': 'Census Provider',
         'description': 'A Census provider for Apache Ariflow.',
         'hook-class-names': ['airflow_provider_census.hooks.census.CensusHook'],
-        'versions': ['1.1.0']
+        'versions': ['1.1.1']
     }
