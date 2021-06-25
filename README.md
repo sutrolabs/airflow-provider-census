@@ -85,6 +85,7 @@ The following example will run a Census sync once a day:
 
 ```python
 from airflow_provider_census.operators.census import CensusOperator
+from airflow_provider_census.sensors.census import CensusSensor
 
 from airflow import DAG
 from airflow.utils.dates import days_ago
