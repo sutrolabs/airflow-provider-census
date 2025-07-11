@@ -22,7 +22,7 @@ classifiers = [
 provider_info = "airflow_provider_census.__init__:get_provider_info"
 
 [tool.poetry.dependencies]
-python = ">= 3.11,<4.0"
+python = ">= 3.10,<4.0"
 apache-airflow = ">= 1.10"
 apache-airflow-providers-http = ">= 1.1.1"
 
