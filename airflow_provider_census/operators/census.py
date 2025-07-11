@@ -1,5 +1,13 @@
-from airflow.models import BaseOperator
-from airflow.utils.decorators import apply_defaults
+try:
+    from airflow.models import BaseOperator
+except ImportError: # airflow 2.0
+    from airflow.providers.standard.operators.base import BaseOperator
+
+try:
+    from airflow.utils.decorators import apply_defaults
+except ImportError: # airflow 3.0
+    apply_defaults = lambda f: f
+
 from typing import Any
 
 from airflow_provider_census.hooks.census import CensusHook

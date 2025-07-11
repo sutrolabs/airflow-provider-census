@@ -2,13 +2,12 @@ from airflow_provider_census.operators.census import CensusOperator
 from airflow_provider_census.sensors.census import CensusSensor
 
 from airflow import DAG
-from airflow.utils.dates import days_ago
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': datetime.today() - timedelta(days=1),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
