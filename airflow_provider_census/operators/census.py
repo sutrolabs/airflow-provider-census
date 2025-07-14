@@ -1,6 +1,6 @@
 try:
     from airflow.models import BaseOperator
-except ImportError: # airflow 2.0
+except ImportError: # airflow 3.0
     from airflow.providers.standard.operators.base import BaseOperator
 
 try:
