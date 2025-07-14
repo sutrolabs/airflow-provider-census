@@ -5,7 +5,10 @@ except ImportError:
 
 from airflow.exceptions import AirflowException
 from airflow_provider_census.hooks.census import CensusHook
-from airflow.utils.decorators import apply_defaults
+try:
+    from airflow.utils.decorators import apply_defaults
+except ImportError: # airflow 3.0
+    apply_defaults = lambda f: f
 
 from airflow_provider_census.hooks.census import CensusHook
 
