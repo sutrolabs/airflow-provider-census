@@ -8,8 +8,6 @@ Install the [airflow-provider-census](https://pypi.org/project/airflow-provider-
 
 ## Configuration
 
-There are 2 ways to configure a Census connection depending on whether you are using Airflow 1.10 or Airflow 2.
-
 The `CensusHook` and `CensusOperator` use the `census_default` connection id as a default, although this is configurable if you would like to use your own connection id.
 
 ### Finding the secret-token
@@ -20,15 +18,7 @@ The `CensusHook` and `CensusOperator` use the `census_default` connection id as 
 4. The url will be of the format https://bearer:secret-token:arandomstring@app.getcensus.com/api/v1/syncs/0/trigger
 5. the secret token will be of the format "secret-token:arandomstring" in the url above, including the "secret-token:" part. Do not include the "@".
 
-### Configuration in Airflow 1.10
-
-In the Airflow Connections UI, create a new connection:
-
-* Conn ID: census_default
-* Conn Type: HTTP
-* Password: secret-token
-
-### Configuration in Airflow 2
+### Configuration in Airflow
 
 In the Airflow Connections UI, create a new connection:
 

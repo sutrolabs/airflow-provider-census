@@ -1,38 +1,37 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "Census", email = "dev@getcensus.com"},
+]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = "<4.0,>=3.10"
+dependencies = [
+    "apache-airflow<4.0,>2.0",
+    "apache-airflow-providers-http>=1.1.1",
+]
 name = "airflow-provider-census"
 version = "1.4.0"
 description = "A Census provider for Apache Airflow."
-license = "MIT"
-authors = ["Census <dev@getcensus.com>"]
 readme = "README.md"
-homepage = "https://www.getcensus.com/"
-repository = "https://github.com/sutrolabs/airflow-provider-census"
 classifiers = [
-  "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Operating System :: OS Independent"
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
 ]
 
-[tool.poetry.urls]
+[project.urls]
 "Bug Tracker" = "https://github.com/sutrolabs/airflow-provider-census/issues"
+homepage = "https://www.getcensus.com/"
+repository = "https://github.com/sutrolabs/airflow-provider-census"
 
-[tool.poetry.plugins.apache_airflow_provider]
+[project.entry-points.apache_airflow_provider]
 provider_info = "airflow_provider_census.__init__:get_provider_info"
 
-[tool.poetry.dependencies]
-python = ">= 3.11,<4.0"
-apache-airflow = ">= 1.10"
-apache-airflow-providers-http = ">= 1.1.1"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^6.2.4"
-requests-mock = "^1.9.3"
-# workaround for https://github.com/python-poetry/poetry/issues/9293
-docutils = "0.21"
-pendulum = "2.1.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pytest<7.0.0,>=6.2.4",
+    "requests-mock<2.0.0,>=1.9.3",
+    "docutils==0.21",
+    "pendulum==2.1.2",
+]

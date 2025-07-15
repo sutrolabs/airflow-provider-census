@@ -1,8 +1,4 @@
-try:
-    from airflow.sensors.base import BaseSensorOperator # airflow 2.0
-except ImportError:
-    from airflow.sensors.base_sensor_operator import BaseSensorOperator # airflow 1.10
-
+from airflow.sensors.base import BaseSensorOperator
 from airflow.exceptions import AirflowException
 from airflow_provider_census.hooks.census import CensusHook
 try:

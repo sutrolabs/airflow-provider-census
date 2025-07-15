@@ -2,10 +2,7 @@ import requests
 from typing import Dict
 
 from airflow.exceptions import AirflowException
-try:
-    from airflow.providers.http.hooks.http import HttpHook # airflow 2.0
-except ImportError:
-    from airflow.hooks.http_hook import HttpHook # airflow 1.10
+from airflow.providers.http.hooks.http import HttpHook
 
 class CensusHook(HttpHook):
     """Census API hook
@@ -39,7 +36,7 @@ class CensusHook(HttpHook):
             raise AirflowException('Census Secret Token is required for this hook.')
         return secret_token
 
-    def get_conn(self, headers) -> requests.Session:
+    def get_conn(self, headers, extra_options=None) -> requests.Session:
         secret_token = self._get_secret_token()
 
         auth_header = {
@@ -48,7 +45,7 @@ class CensusHook(HttpHook):
 
         all_headers = {**auth_header, **headers} if headers else auth_header
 
-        session = super().get_conn(all_headers)
+        session = super().get_conn(all_headers, extra_options)
 
         conn = self.get_connection(self.census_conn_id)
         if not conn.host:
