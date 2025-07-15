@@ -10,7 +10,7 @@ dependencies = [
     "apache-airflow-providers-http>=1.1.1",
 ]
 name = "airflow-provider-census"
-version = "1.4.0"
+version = "2.0.0"
 description = "A Census provider for Apache Airflow."
 readme = "README.md"
 classifiers = [
