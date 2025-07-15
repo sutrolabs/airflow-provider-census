@@ -1,2 +1,5 @@
 dist
 __pycache__
+.venv
+.airflow
+airflow_provider_census.egg-info

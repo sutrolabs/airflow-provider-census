@@ -1,22 +1,21 @@
 # Setup
 
-1. Install ![pyenv](https://github.com/pyenv/pyenv) and then run `pyenv install`.
-2. Install ![poetry](https://python-poetry.org/) and then run `poetry install`.
+Install ![uv](https://docs.astral.sh/uv/getting-started/installation/) and then run `uv sync --dev`.
 
 # Running tests
 
-The tests will initialize airflow under ~/airflow.
+The tests will initialize airflow under ./.airflow.
 
-Run `poetry run pytest` to run all the tests.
+Run `AIRFLOW_HOME=$PWD/.airflow uv run pytest` to run all the tests.
 
 # Building a package
 
-Run `poetry build`.
+Run `uv build`.
 
 # Publishing a package
 
-Get an api token from PyPI and run `poetry config pypi-token.pypi my-token`.
+Get an api token from PyPI and run `uv config pypi-token.pypi my-token`.
 
-To publish the package you just built, run `poetry publish`.
+To publish the package you just built, run `uv publish`.
 
 Don't forget to create a git tag for the version you just released!

@@ -3,7 +3,7 @@ from airflow.models import Connection
 import os
 
 def pytest_sessionstart(session):
-    os.system('poetry run airflow db init')
+    os.system('uv run airflow db migrate')
 
     global conn
     conn = Connection(
