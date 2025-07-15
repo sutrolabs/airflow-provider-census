@@ -14,8 +14,10 @@ Run `uv build`.
 
 # Publishing a package
 
-Get an api token from PyPI and run `uv config pypi-token.pypi my-token`.
-
-To publish the package you just built, run `uv publish`.
+1. Get an api token from PyPI
+2. To publish the package you just built, run `uv publish -t <my token>`.
 
 Don't forget to create a git tag for the version you just released!
+
+1. `git tag vmajor.minor.patch`
+2. `git push origin --tags`
