@@ -7,7 +7,7 @@ from airflow_provider_census.hooks.census import CensusHook
 
 
 class CensusSyncRunLink(BaseOperatorLink):
-    name = "Census Sync Run"
+    name = "Fivetran Activations Sync Run"
 
     def get_link(self, operator, dttm=None, ti_key=None) -> str | None:
         sync_run_id = None

@@ -1,6 +1,6 @@
-# Census Provider for Apache Airflow
+# Fivetran Activations Provider for Apache Airflow
 
-This package lets you trigger and monitor Census Activations syncs from Apache Airflow.
+This package lets you trigger and monitor Fivetran Activations syncs from Apache Airflow.
 
 ## Support Matrix
 
@@ -23,9 +23,9 @@ The provider uses the `census_default` connection ID by default.
 Create a connection in the Airflow UI with:
 
 - Conn Id: `census_default`
-- Conn Type: `Census`
+- Conn Type: `Census` (kept for backward compatibility)
 - Host: `app.getcensus.com` for US workspaces or `app-eu.getcensus.com` for EU workspaces
-- Activations API Token: your Census / Activations API token
+- Activations API Token: your Fivetran Activations API token
 
 The hook implements `test_connection()`, so Airflow's Test Connection button and `airflow connections test` CLI command can validate the setup.
 
@@ -47,14 +47,14 @@ from airflow_provider_census.hooks.census import CensusHook
 from airflow_provider_census.operators.census import CensusOperator
 ```
 
-`CensusOperator` triggers a sync run and returns the resulting `sync_run_id` via XCom.
+`CensusOperator` triggers a Fivetran Activations sync run and returns the resulting `sync_run_id` via XCom.
 
 Parameters:
 
-- `sync_id`: the Census sync ID, for example from `https://app.getcensus.com/syncs/<SYNC_ID>/overview`
+- `sync_id`: the Fivetran Activations sync ID, for example from `https://app.getcensus.com/syncs/<SYNC_ID>/overview`
 - `census_conn_id`: optional connection ID, defaults to `census_default`
 
-The operator also exposes a `Census Sync Run` task link in the Airflow UI.
+The operator also exposes a `Fivetran Activations Sync Run` task link in the Airflow UI.
 
 ## Sensor
 
@@ -62,7 +62,7 @@ The operator also exposes a `Census Sync Run` task link in the Airflow UI.
 from airflow_provider_census.sensors.census import CensusSensor
 ```
 
-`CensusSensor` waits for a sync run to complete.
+`CensusSensor` waits for a Fivetran Activations sync run to complete.
 
 Parameters:
 
@@ -120,5 +120,3 @@ The Activations Management API reference now lives in Fivetran documentation:
 ## Feedback
 
 Source code: https://github.com/sutrolabs/airflow-provider-census
-
-Support: `support@getcensus.com`

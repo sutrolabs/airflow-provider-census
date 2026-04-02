@@ -10,7 +10,7 @@ from airflow.providers.http.hooks.http import HttpHook
 
 
 class CensusHook(HttpHook):
-    """Census API hook
+    """Fivetran Activations API hook
 
     :param census_conn_id: `Conn ID` of the Connection to be used to configure this hook.
     :type census_conn_id: str
@@ -97,9 +97,9 @@ class CensusHook(HttpHook):
             response.raise_for_status()
             payload = response.json()
         except Exception as exc:
-            return False, f"Unable to connect to Census Activations API: {exc}"
+            return False, f"Unable to connect to Fivetran Activations API: {exc}"
 
         if payload.get("status") != "success":
-            return False, "Unexpected response from Census Activations API."
+            return False, "Unexpected response from Fivetran Activations API."
 
-        return True, "Connection successfully tested against Census Activations API."
+        return True, "Connection successfully tested against Fivetran Activations API."

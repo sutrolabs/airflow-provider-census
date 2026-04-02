@@ -1,6 +1,6 @@
 [project]
 authors = [
-    {name = "Census", email = "dev@getcensus.com"},
+    {name = "Fivetran"},
 ]
 license = "MIT"
 license-files = ["LICENSE"]
@@ -12,7 +12,7 @@ dependencies = [
 ]
 name = "airflow-provider-census"
 version = "2.1.0"
-description = "A Census provider for Apache Airflow."
+description = "A Fivetran Activations provider for Apache Airflow"
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3.10",
@@ -24,7 +24,7 @@ classifiers = [
 
 [project.urls]
 "Bug Tracker" = "https://github.com/sutrolabs/airflow-provider-census/issues"
-homepage = "https://www.getcensus.com/"
+homepage = "https://fivetran.com/docs/activations/rest-api/api-reference/introduction"
 repository = "https://github.com/sutrolabs/airflow-provider-census"
 
 [project.entry-points.apache_airflow_provider]

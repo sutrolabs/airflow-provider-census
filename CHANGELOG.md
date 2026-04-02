@@ -6,7 +6,8 @@
 - Added `apache-airflow-providers-common-compat` and updated provider imports for Airflow 2.10+/3.x compatibility
 - Added a deferrable `CensusSensor` powered by a new `CensusTrigger`
 - Added `CensusHook.test_connection()` support for Airflow UI/CLI connection testing
-- Added a task extra link back to the Census sync history view
+- Updated user-facing text to reflect that Census is now Fivetran Activations
+- Added a task extra link back to the Fivetran Activations sync history view
 - Refreshed the example DAG and README for the current Activations API docs and compatibility story
 
 ## 2.0.0 — 2025-07-15

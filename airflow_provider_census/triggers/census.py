@@ -60,6 +60,6 @@ class CensusTrigger(BaseTrigger):
                 payload = await response.json()
 
         if payload.get("status") != "success":
-            raise AirflowException("Unexpected response from Census Activations API.")
+            raise AirflowException("Unexpected response from Fivetran Activations API.")
 
         return payload["data"]

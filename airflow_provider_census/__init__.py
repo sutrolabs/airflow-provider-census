@@ -1,35 +1,35 @@
 def get_provider_info():
     return {
         "package-name": "airflow-provider-census",
-        "name": "Census Provider",
-        "description": "A Census provider for Apache Airflow.",
+        "name": "Fivetran Activations Provider",
+        "description": "A Fivetran Activations provider for Apache Airflow.",
         "integrations": [
             {
-                "integration-name": "Census",
+                "integration-name": "Fivetran Activations",
                 "external-doc-url": "https://fivetran.com/docs/activations/rest-api/api-reference/introduction",
             }
         ],
         "hooks": [
             {
-                "integration-name": "Census",
+                "integration-name": "Fivetran Activations",
                 "python-modules": ["airflow_provider_census.hooks.census"],
             }
         ],
         "operators": [
             {
-                "integration-name": "Census",
+                "integration-name": "Fivetran Activations",
                 "python-modules": ["airflow_provider_census.operators.census"],
             }
         ],
         "sensors": [
             {
-                "integration-name": "Census",
+                "integration-name": "Fivetran Activations",
                 "python-modules": ["airflow_provider_census.sensors.census"],
             }
         ],
         "triggers": [
             {
-                "integration-name": "Census",
+                "integration-name": "Fivetran Activations",
                 "python-modules": ["airflow_provider_census.triggers.census"],
             }
         ],

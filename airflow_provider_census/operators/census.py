@@ -7,9 +7,9 @@ from airflow_provider_census.links.census import CensusSyncRunLink
 
 
 class CensusOperator(BaseOperator):
-    """Triggers sync with Census API.
+    """Triggers a sync with the Fivetran Activations API.
 
-    :param sync_id: Census sync ID
+    :param sync_id: Fivetran Activations sync ID
     :type sync_id: int
     :param census_conn_id: `Conn ID` of the Connection to be used to configure this hook.
     :type census_conn_id: str

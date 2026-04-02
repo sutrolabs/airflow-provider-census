@@ -38,7 +38,7 @@ class TestCensusSensor:
         with pytest.raises(AirflowException) as excinfo:
             sensor.poke(None)
 
-        assert str(excinfo.value) == "Census sync run 0 failed with error: something broke"
+        assert str(excinfo.value) == "Fivetran Activations sync run 0 failed with error: something broke"
 
     def test_poke_completed(self, requests_mock):
         sync_run_info_json = {
@@ -83,7 +83,7 @@ class TestCensusSensor:
                 {"sync_run_id": 7, "status": "failed", "error_message": "something broke"},
             )
 
-        assert str(excinfo.value) == "Census sync run 7 failed with error: something broke"
+        assert str(excinfo.value) == "Fivetran Activations sync run 7 failed with error: something broke"
 
     def test_execute_complete_completed(self):
         sensor = CensusSensor(sync_run_id=7, task_id="census_sensor", deferrable=True)

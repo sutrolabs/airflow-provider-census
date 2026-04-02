@@ -13,7 +13,7 @@ class CensusSensor(BaseSensorOperator):
     """Waits for sync to complete.
 
 
-    :param sync_run_id: Census sync run ID
+    :param sync_run_id: Fivetran Activations sync run ID
     :type sync_run_id: str
     :param census_conn_id: `Conn ID` of the Connection to be used to configure this hook.
     :type census_conn_id: str
@@ -44,7 +44,7 @@ class CensusSensor(BaseSensorOperator):
             return super().execute(context)
 
         if self.poke(context):
-            self.log.info("Census sync run %s completed before deferral.", self.sync_run_id)
+            self.log.info("Fivetran Activations sync run %s completed before deferral.", self.sync_run_id)
             return None
 
         self.defer(
@@ -58,7 +58,7 @@ class CensusSensor(BaseSensorOperator):
 
     def execute_complete(self, context: Any, event: dict[str, Any] | None = None) -> None:
         if not event:
-            raise AirflowException("Census trigger returned no event payload.")
+            raise AirflowException("Fivetran Activations trigger returned no event payload.")
 
         status = event.get("status")
         if status == "completed":
@@ -67,14 +67,14 @@ class CensusSensor(BaseSensorOperator):
         if status == "failed":
             error_message = event.get("error_message") or "Unknown error."
             raise AirflowException(
-                "Census sync run {sync_run_id} failed with error: {error_message}".format(
+                "Fivetran Activations sync run {sync_run_id} failed with error: {error_message}".format(
                     sync_run_id=event.get("sync_run_id", self.sync_run_id),
                     error_message=error_message,
                 )
             )
 
         raise AirflowException(
-            "Census sync run {sync_run_id} returned unexpected status: {status}".format(
+            "Fivetran Activations sync run {sync_run_id} returned unexpected status: {status}".format(
                 sync_run_id=event.get("sync_run_id", self.sync_run_id),
                 status=status,
             )
@@ -87,7 +87,7 @@ class CensusSensor(BaseSensorOperator):
 
         if status == "failed":
             raise AirflowException(
-                "Census sync run {sync_run_id} failed with error: {error_message}".format(
+                "Fivetran Activations sync run {sync_run_id} failed with error: {error_message}".format(
                     sync_run_id=self.sync_run_id,
                     error_message=info.get("error_message") or info.get("error_detail") or "Unknown error.",
                 )
