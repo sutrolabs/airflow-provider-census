@@ -1,12 +1,23 @@
 # Fivetran Activations Provider for Apache Airflow
 
-This package lets you trigger and monitor Fivetran Activations syncs from Apache Airflow.
+This package lets you trigger and monitor Fivetran Activations (formerly Census) syncs from Apache Airflow.
 
 ## Support Matrix
 
 - Python: `>=3.10`
 - Apache Airflow: `>=2.10,<4`
 - Airflow authoring compatibility: Airflow `2.10+` and `3.x`
+
+## Airflow 3 Highlights
+
+This provider supports Apache Airflow `2.10+` and `3.x` from one package.
+
+Airflow 3-friendly capabilities include:
+
+- deferrable `CensusSensor` support so long-running sync polling does not hold a worker slot
+- Airflow connection testing support in the UI and CLI via `test_connection()`
+
+For backward compatibility, the provider still uses the existing `CensusHook`, `CensusOperator`, `CensusSensor`, and `census` connection type names even though the product is now Fivetran Activations.
 
 ## Installation
 
