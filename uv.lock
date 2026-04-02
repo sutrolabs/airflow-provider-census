@@ -144,6 +144,7 @@ name = "airflow-provider-census"
 version = "2.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "aiohttp" },
     { name = "apache-airflow" },
     { name = "apache-airflow-providers-common-compat" },
     { name = "apache-airflow-providers-http", version = "5.3.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
@@ -158,6 +159,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "aiohttp", specifier = ">=3.9" },
     { name = "apache-airflow", specifier = ">=2.10,<4" },
     { name = "apache-airflow-providers-common-compat", specifier = ">=1.8.0" },
     { name = "apache-airflow-providers-http", specifier = ">=1.1.1" },

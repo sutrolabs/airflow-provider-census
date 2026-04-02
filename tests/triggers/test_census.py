@@ -25,7 +25,7 @@ class TestCensusTrigger:
     def test_run_emits_completed_event(self, monkeypatch):
         trigger = CensusTrigger(sync_run_id=7, poll_interval=0)
 
-        async def fake_get_sync_run_info():
+        async def fake_get_sync_run_info(**kwargs):
             return {"status": "completed"}
 
         monkeypatch.setattr(trigger, "_get_sync_run_info", fake_get_sync_run_info)

@@ -21,3 +21,13 @@ class TestCensusSyncRunLink:
                 link.get_link(operator, ti_key=DummyTaskInstanceKey())
                 == "https://app.getcensus.com/syncs/42/history?sync_run_id=99"
             )
+
+    def test_get_link_ignores_removed_airflow_3_xcom_fallback(self):
+        operator = CensusOperator(sync_id=42, task_id="census_operator")
+        link = CensusSyncRunLink()
+
+        with patch(
+            "airflow_provider_census.links.census.XCom.get_one",
+            side_effect=TypeError("unexpected keyword argument 'execution_date'"),
+        ):
+            assert link.get_link(operator, dttm="2026-04-01T00:00:00+00:00") is None
