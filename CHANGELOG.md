@@ -27,6 +27,7 @@
 ## 1.1.1 — 2021-06-18
 
 - Incorporated Astronomer suggestions for provider best practices
+
 ## 1.1.0 — 2021-06-07
 
 - Added `CensusSensor` with polling support to monitor sync run status
