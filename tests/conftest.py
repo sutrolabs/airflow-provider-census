@@ -1,24 +1,29 @@
+import subprocess
+
 from airflow import settings
-from airflow.models import Connection
-import os
+from airflow.models.connection import Connection
+
+CONN_ID = "census_default"
+
 
 def pytest_sessionstart(session):
-    os.system('uv run airflow db migrate')
+    subprocess.run(["airflow", "db", "migrate"], check=True)
 
-    global conn
-    conn = Connection(
-        conn_id = 'census_default',
-        conn_type = 'Census',
-        password = 'secret-token:census'
+    db_session = settings.Session()
+    db_session.query(Connection).filter(Connection.conn_id == CONN_ID).delete()
+    db_session.add(
+        Connection(
+            conn_id=CONN_ID,
+            conn_type="census",
+            password="secret-token:census",
+        )
     )
-
-    session = settings.Session()
-    session.add(conn)
-    session.commit()
+    db_session.commit()
+    db_session.close()
 
 
 def pytest_sessionfinish(session, exitstatus):
-    global conn
-    session = settings.Session()
-    session.delete(conn)
-    session.commit()
+    db_session = settings.Session()
+    db_session.query(Connection).filter(Connection.conn_id == CONN_ID).delete()
+    db_session.commit()
+    db_session.close()
