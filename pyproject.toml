@@ -4,17 +4,17 @@ authors = [
 ]
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = "<4.0,>=3.9"
+requires-python = "<4.0,>=3.10"
 dependencies = [
-    "apache-airflow<3.13,>2.0",
+    "apache-airflow>=2.10,<4",
+    "apache-airflow-providers-common-compat>=1.8.0",
     "apache-airflow-providers-http>=1.1.1",
 ]
 name = "airflow-provider-census"
-version = "2.0.0"
+version = "2.1.0"
 description = "A Census provider for Apache Airflow."
 readme = "README.md"
 classifiers = [
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",

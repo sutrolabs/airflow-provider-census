@@ -1,16 +1,9 @@
-try:
-    from airflow.models import BaseOperator
-except ImportError: # airflow 3.0
-    from airflow.providers.standard.operators.base import BaseOperator
-
-try:
-    from airflow.utils.decorators import apply_defaults
-except ImportError: # airflow 3.0
-    apply_defaults = lambda f: f
+from airflow.providers.common.compat.sdk import BaseOperator
 
 from typing import Any
 
 from airflow_provider_census.hooks.census import CensusHook
+from airflow_provider_census.links.census import CensusSyncRunLink
 
 
 class CensusOperator(BaseOperator):
@@ -22,8 +15,9 @@ class CensusOperator(BaseOperator):
     :type census_conn_id: str
     """
 
-    @apply_defaults
-    def __init__(self, sync_id: int, census_conn_id: str = 'census_default', **kwargs):
+    operator_extra_links = (CensusSyncRunLink(),)
+
+    def __init__(self, sync_id: int, census_conn_id: str = "census_default", **kwargs) -> None:
         super().__init__(**kwargs)
         self.sync_id = sync_id
         self.census_conn_id = census_conn_id
