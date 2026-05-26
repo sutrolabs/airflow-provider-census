@@ -1,7 +1,5 @@
 [project]
-authors = [
-    {name = "Fivetran"},
-]
+authors = [{ name = "Fivetran" }]
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = "<4.0,>=3.10"
@@ -21,6 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
+    "Typing :: Typed",
 ]
 
 [project.urls]
@@ -32,7 +31,4 @@ repository = "https://github.com/sutrolabs/airflow-provider-census"
 provider_info = "airflow_provider_census.__init__:get_provider_info"
 
 [dependency-groups]
-dev = [
-    "pytest<7.0.0,>=6.2.4",
-    "requests-mock<2.0.0,>=1.9.3",
-]
+dev = ["pytest<7.0.0,>=6.2.4", "requests-mock<2.0.0,>=1.9.3"]
