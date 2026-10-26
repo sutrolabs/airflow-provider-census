@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from airflow.exceptions import AirflowException
 import pytest
 
@@ -54,14 +56,15 @@ class TestCensusSensor:
         assert sensor.poke(None)
 
     def test_execute_deferrable_defers(self, monkeypatch):
-        sensor = CensusSensor(sync_run_id=7, task_id="census_sensor", deferrable=True, poke_interval=42)
+        sensor = CensusSensor(sync_run_id=7, task_id="census_sensor", deferrable=True, poke_interval=42, timeout=600)
         captured = {}
 
         monkeypatch.setattr(sensor, "poke", lambda context: False)
 
-        def fake_defer(*, trigger, method_name):
+        def fake_defer(*, trigger, method_name, timeout):
             captured["trigger"] = trigger
             captured["method_name"] = method_name
+            captured["timeout"] = timeout
             raise DeferCalled
 
         monkeypatch.setattr(sensor, "defer", fake_defer)
@@ -73,6 +76,7 @@ class TestCensusSensor:
         assert captured["trigger"].sync_run_id == 7
         assert captured["trigger"].poll_interval == 42.0
         assert captured["method_name"] == "execute_complete"
+        assert captured["timeout"] == timedelta(seconds=600)        
 
     def test_execute_complete_failed(self):
         sensor = CensusSensor(sync_run_id=7, task_id="census_sensor", deferrable=True)
