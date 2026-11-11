@@ -17,7 +17,7 @@ class TestCensusSensor:
                 "status": "working",
             },
         }
-        requests_mock.get("https://app.getcensus.com/api/v1/sync_runs/0", json=sync_run_info_json)
+        requests_mock.get("https://app.getcensus.com/api/v2/sync_runs/0", json=sync_run_info_json)
 
         sensor = CensusSensor(sync_run_id=0, task_id="census_sensor")
 
@@ -31,7 +31,7 @@ class TestCensusSensor:
                 "status": "failed",
             },
         }
-        requests_mock.get("https://app.getcensus.com/api/v1/sync_runs/0", json=sync_run_info_json)
+        requests_mock.get("https://app.getcensus.com/api/v2/sync_runs/0", json=sync_run_info_json)
 
         sensor = CensusSensor(sync_run_id=0, task_id="census_sensor")
 
@@ -47,7 +47,7 @@ class TestCensusSensor:
                 "status": "completed",
             },
         }
-        requests_mock.get("https://app.getcensus.com/api/v1/sync_runs/0", json=sync_run_info_json)
+        requests_mock.get("https://app.getcensus.com/api/v2/sync_runs/0", json=sync_run_info_json)
 
         sensor = CensusSensor(sync_run_id=0, task_id="census_sensor")
 

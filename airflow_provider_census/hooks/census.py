@@ -72,7 +72,7 @@ class CensusHook(HttpHook):
         return session
 
     def trigger_sync(self, sync_id: int) -> int:
-        endpoint = "api/v1/syncs/{sync_id}/trigger".format(sync_id=sync_id)
+        endpoint = "api/v2/syncs/{sync_id}/trigger".format(sync_id=sync_id)
 
         self.method = "POST"
         response = self.run(endpoint)
@@ -81,7 +81,7 @@ class CensusHook(HttpHook):
         return response.json()["data"]["sync_run_id"]
 
     def get_sync_run_info(self, sync_run_id: int | str) -> Dict[str, Any]:
-        endpoint = "api/v1/sync_runs/{sync_run_id}".format(sync_run_id=sync_run_id)
+        endpoint = "api/v2/sync_runs/{sync_run_id}".format(sync_run_id=sync_run_id)
 
         self.method = "GET"
         response = self.run(endpoint)
@@ -93,7 +93,7 @@ class CensusHook(HttpHook):
         self.method = "GET"
 
         try:
-            response = self.run("api/v1/syncs?page=1&per_page=1")
+            response = self.run("api/v2/syncs?page=1&per_page=1")
             response.raise_for_status()
             payload = response.json()
         except Exception as exc:
