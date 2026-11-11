@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0 — 2026-11-11
+
+- **Breaking:** Switched all API calls (hook, operator, sensor, and deferrable trigger) from Activations API V1 to V2. V1 is retired on 2027-01-15.
+- **Breaking:** V2 only accepts Activations Personal Access Tokens.
+
 ## 2.1.0 — 2026-04-02
 
 - Raised the supported Python floor to 3.10+
@@ -9,7 +14,7 @@
 - Updated user-facing text to reflect that Census is now Fivetran Activations
 - Added a task extra link back to the Fivetran Activations sync history view
 - Refreshed the example DAG and README for the current Activations API docs and compatibility story
-- A future `3.0.0` release is planned to remove the Census names from code and drop Airflow 2.x support
+- A future `4.0.0` release is planned to remove the Census names from code and drop Airflow 2.x support
 
 ## 2.0.0 — 2025-07-15
 

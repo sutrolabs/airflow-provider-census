@@ -142,7 +142,7 @@ wheels = [
 
 [[package]]
 name = "airflow-provider-census"
-version = "2.1.0"
+version = "3.0.0"
 source = { virtual = "." }
 dependencies = [
     { name = "aiohttp" },
@@ -321,7 +321,7 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
+    { name = "apache-airflow", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/64/c0/895c209702979f9fa1eb90073ec3d04eb59f76bddb51b72b9fc5e8ab80f9/apache_airflow_providers_common_io-1.6.0.tar.gz", hash = "sha256:b9dabc08f0c7b27ec13cc9d222c096b520b64d2ee331fa6d7ccddfcf06158236", size = 22858, upload-time = "2025-05-18T10:42:04.229Z" }
 wheels = [
@@ -338,7 +338,7 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
+    { name = "apache-airflow", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f5/81/12a40403eb4475e61bfe2a67d7f410aaf1e0756b65b7e4743c8bfb3b7252/apache_airflow_providers_common_io-1.6.1.tar.gz", hash = "sha256:2bfc3cfa85070b1e0e827566c4684f66b3d542670d74c4e5c4a8e4aaabd27f9f", size = 23076, upload-time = "2025-07-06T08:38:54.338Z" }
 wheels = [
@@ -353,10 +353,10 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
-    { name = "methodtools" },
-    { name = "more-itertools" },
-    { name = "sqlparse" },
+    { name = "apache-airflow", marker = "python_full_version < '3.12'" },
+    { name = "methodtools", marker = "python_full_version < '3.12'" },
+    { name = "more-itertools", marker = "python_full_version < '3.12'" },
+    { name = "sqlparse", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f1/e9/afe2da325d136796a7ff4cfcd05d4a64362ee4b9acc719f3deb6aa2b1082/apache_airflow_providers_common_sql-1.27.2.tar.gz", hash = "sha256:7cdc5cdf40a3e91e7b6079ef6eaea929ed0da78980b6afdba02c1011129fb756", size = 100414, upload-time = "2025-06-18T15:06:27.095Z" }
 wheels = [
@@ -373,10 +373,10 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
-    { name = "methodtools" },
-    { name = "more-itertools" },
-    { name = "sqlparse" },
+    { name = "apache-airflow", marker = "python_full_version >= '3.12'" },
+    { name = "methodtools", marker = "python_full_version >= '3.12'" },
+    { name = "more-itertools", marker = "python_full_version >= '3.12'" },
+    { name = "sqlparse", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ff/c7/88d7a6e7757b52b90ed923a9ad9de7308b9aee4037ff5baeac704c37e7d6/apache_airflow_providers_common_sql-1.27.3.tar.gz", hash = "sha256:5efd7706ea6392eac564cac1652b905d9262c4c39ccc6867ac45831fa0fb98f4", size = 101641, upload-time = "2025-07-06T08:38:55.978Z" }
 wheels = [
@@ -393,11 +393,11 @@ resolution-markers = [
     "python_full_version == '3.13.*'",
 ]
 dependencies = [
-    { name = "aiohttp" },
-    { name = "apache-airflow" },
-    { name = "asgiref", version = "3.9.1", source = { registry = "https://pypi.org/simple" } },
-    { name = "requests" },
-    { name = "requests-toolbelt" },
+    { name = "aiohttp", marker = "python_full_version < '3.14'" },
+    { name = "apache-airflow", marker = "python_full_version < '3.14'" },
+    { name = "asgiref", version = "3.9.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "requests", marker = "python_full_version < '3.14'" },
+    { name = "requests-toolbelt", marker = "python_full_version < '3.14'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/da/09/5883f40df67cbc0569b56d5e22920a4fc03e7e92f7b3b756a88e140cfdd6/apache_airflow_providers_http-5.3.1.tar.gz", hash = "sha256:0d29da81fa3cee78af7fd6cd40c25aeeafeb3386bf72891c8ab871c15fee49b6", size = 61543, upload-time = "2025-06-18T15:06:35.677Z" }
 wheels = [
@@ -412,11 +412,11 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "aiohttp" },
-    { name = "apache-airflow" },
-    { name = "asgiref", version = "3.11.1", source = { registry = "https://pypi.org/simple" } },
-    { name = "requests" },
-    { name = "requests-toolbelt" },
+    { name = "aiohttp", marker = "python_full_version >= '3.14'" },
+    { name = "apache-airflow", marker = "python_full_version >= '3.14'" },
+    { name = "asgiref", version = "3.11.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "requests", marker = "python_full_version >= '3.14'" },
+    { name = "requests-toolbelt", marker = "python_full_version >= '3.14'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/63/79/683452a15c2afb77f92dfde11826bb0c11cc421e5748774159fe808d7ea5/apache_airflow_providers_http-5.3.2.tar.gz", hash = "sha256:01fbc7d25f0fd855deea881fe5545ac4914556466d0df152dd9e1881c93409a4", size = 63818, upload-time = "2025-07-06T08:39:26.331Z" }
 wheels = [
@@ -431,8 +431,8 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
-    { name = "apache-airflow-providers-common-compat" },
+    { name = "apache-airflow", marker = "python_full_version < '3.12'" },
+    { name = "apache-airflow-providers-common-compat", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/c2/12/220f2f921abccf2bc1bb58f5d22cf73d4f41014d6810c60d7411b39b615d/apache_airflow_providers_smtp-2.1.0.tar.gz", hash = "sha256:758b66da0336d2e1165f7050a06d215865e4b553c770a5c82bc7fac5508fe727", size = 36692, upload-time = "2025-05-18T10:43:07.759Z" }
 wheels = [
@@ -449,8 +449,8 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
-    { name = "apache-airflow-providers-common-compat" },
+    { name = "apache-airflow", marker = "python_full_version >= '3.12'" },
+    { name = "apache-airflow-providers-common-compat", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/f7/da/51f01ceba35bdaa6ab450475365cc1ac855b7e6a1c11f3771b1ab6833f6c/apache_airflow_providers_smtp-2.1.1.tar.gz", hash = "sha256:1b2b7c7d17784a37e7c517a599356ea973942ee476de9651522ebd66ab7c5197", size = 37301, upload-time = "2025-07-06T08:39:58.887Z" }
 wheels = [
@@ -465,7 +465,7 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
+    { name = "apache-airflow", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/01/12/71c09e07c3744d71dd4d5dd509a9ab3db896dcc69d726cf97609fb64d055/apache_airflow_providers_standard-1.3.0.tar.gz", hash = "sha256:53eff0c34279ce5ece2ff5fb1401055dde7ae5c3a4e8acd1d90042ac3198d54e", size = 159024, upload-time = "2025-06-18T15:06:48.057Z" }
 wheels = [
@@ -482,7 +482,7 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "apache-airflow" },
+    { name = "apache-airflow", marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/21/aa/d168b5f816fc9df3c5ea0a06c4f53cd5610f468d249b430283596403f8ab/apache_airflow_providers_standard-1.4.0.tar.gz", hash = "sha256:ec8e4d0a5f6e02bd544600aed5dd342daf0c8e403d87b5adc5c7a546caa73512", size = 160257, upload-time = "2025-07-06T08:40:02.421Z" }
 wheels = [
@@ -531,7 +531,7 @@ resolution-markers = [
     "python_full_version == '3.13.*'",
 ]
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11' or python_full_version >= '3.14'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/90/61/0aa957eec22ff70b830b22ff91f825e70e1ef732c06666a805730f28b36b/asgiref-3.9.1.tar.gz", hash = "sha256:a5ab6582236218e5ef1648f242fd9f10626cfd4de8dc377db215d5d5098e3142", size = 36870, upload-time = "2025-07-08T09:07:43.344Z" }
 wheels = [
@@ -745,7 +745,7 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "python_full_version < '3.12' and sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz", hash = "sha256:ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a", size = 226593, upload-time = "2024-12-21T18:38:44.339Z" }
 wheels = [
@@ -762,7 +762,7 @@ resolution-markers = [
     "python_full_version >= '3.14'",
 ]
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "python_full_version >= '3.12' and sys_platform == 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/60/6c/8ca2efa64cf75a977a0d7fac081354553ebe483345c734fb6b6515d96bbc/click-8.2.1.tar.gz", hash = "sha256:27c491cc05d968d271d5a1db13e3b5a184636d9d930f148c50b038f0d0646202", size = 286342, upload-time = "2025-05-20T23:19:49.832Z" }
 wheels = [
@@ -907,7 +907,7 @@ name = "exceptiongroup"
 version = "1.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions" },
+    { name = "typing-extensions", marker = "python_full_version < '3.12'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0b/9f/a65090624ecf468cdca03533906e7c69ed7588582240cfe7cc9e770b50eb/exceptiongroup-1.3.0.tar.gz", hash = "sha256:b241f5885f560bc56a59ee63ca4c6a8bfa46ae4ad651af316d4e81817bb9fd88", size = 29749, upload-time = "2025-05-10T17:42:51.123Z" }
 wheels = [

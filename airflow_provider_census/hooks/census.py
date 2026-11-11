@@ -27,11 +27,11 @@ class CensusHook(HttpHook):
             "hidden_fields": ["login", "port", "schema", "extra"],
             "relabeling": {
                 "host": "Activations API Host",
-                "password": "Activations API Token",
+                "password": "Activations Personal Access Token",
             },
             "placeholders": {
                 "host": "app.getcensus.com or app-eu.getcensus.com",
-                "password": "secret-token:workspace-token",
+                "password": "Activations PAT",
             },
         }
 
