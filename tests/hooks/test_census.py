@@ -28,7 +28,7 @@ class TestCensusHook:
                 "sync_run_id": 1,
             },
         }
-        requests_mock.post("https://app.getcensus.com/api/v1/syncs/0/trigger", json=trigger_json)
+        requests_mock.post("https://app.getcensus.com/api/v2/syncs/0/trigger", json=trigger_json)
 
         hook = CensusHook()
         sync_run_id = hook.trigger_sync(0)
@@ -42,7 +42,7 @@ class TestCensusHook:
                 "status": "working",
             },
         }
-        requests_mock.get("https://app.getcensus.com/api/v1/sync_runs/0", json=sync_run_info_json)
+        requests_mock.get("https://app.getcensus.com/api/v2/sync_runs/0", json=sync_run_info_json)
 
         hook = CensusHook()
         info = hook.get_sync_run_info(0)
@@ -51,7 +51,7 @@ class TestCensusHook:
 
     def test_test_connection(self, requests_mock):
         requests_mock.get(
-            "https://app.getcensus.com/api/v1/syncs?page=1&per_page=1",
+            "https://app.getcensus.com/api/v2/syncs?page=1&per_page=1",
             json={"status": "success", "data": []},
         )
 

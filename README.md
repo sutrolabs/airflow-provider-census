@@ -35,8 +35,8 @@ Create a connection in the Airflow UI with:
 
 - Conn Id: `census_default`
 - Conn Type: `Census` (kept for backward compatibility)
-- Host: `app.getcensus.com` for US workspaces or `app-eu.getcensus.com` for EU workspaces
-- Activations API Token: your Fivetran Activations API token
+- Host: `app.getcensus.com` for US accounts or `app-eu.getcensus.com` for EU accounts
+- Activations Personal Access Token: an Activations PAT
 
 The hook implements `test_connection()`, so Airflow's Test Connection button and `airflow connections test` CLI command can validate the setup.
 

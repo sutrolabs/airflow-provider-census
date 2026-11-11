@@ -59,7 +59,7 @@ class CensusTrigger(BaseTrigger):
         session: aiohttp.ClientSession,
         hook: CensusHook,
     ) -> dict[str, Any]:
-        url = f"{hook.get_api_base_url()}/api/v1/sync_runs/{self.sync_run_id}"
+        url = f"{hook.get_api_base_url()}/api/v2/sync_runs/{self.sync_run_id}"
 
         async with session.get(url) as response:
             response.raise_for_status()

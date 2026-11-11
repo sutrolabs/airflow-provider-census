@@ -40,5 +40,5 @@ def get_provider_info():
             }
         ],
         "extra-links": ["airflow_provider_census.links.census.CensusSyncRunLink"],
-        "versions": ["2.1.0"],
+        "versions": ["3.0.0"],
     }
